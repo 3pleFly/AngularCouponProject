@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+* {
+  list-style: none;
+  font-family: 'Bebas Neue', cursive;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+html, body {
+  background: rgb(224, 224, 224);
+}

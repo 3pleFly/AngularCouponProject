@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter {
+  width: 95vw;
+  margin: 5%;
+  h1 {
+    text-align: center;
+  }
+  ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40%;
+    li {
+      padding: 4%;
+      transition: 0.15s all ease-in-out;
+      &:hover {
+        color: rgb(207, 207, 207);
+        background: rgb(20, 25, 28);
+      }
+    }
+  }
+}
+
+.coupons-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  .showcase {
+    text-align: center;
+    margin: 0 5%;
+    img {
+      width: 250px;
+      height: 450px;
+      object-fit: cover;
+    }
+  }
+}
+
+#shuffle-btn {
+  cursor: pointer;
+  margin: 5%;
+  font-size: 20px;
+  padding: 0.5%;
+  border: 1px solid rgb(77, 83, 85);
+  transition: 0.15s all ease-in-out;
+  &:hover {
+    color: rgb(207, 207, 207);
+    background: rgb(20, 25, 28);
+    transform: scale(1.2);
+  }
+  &:active {
+    background: rgb(10, 12, 14);
+    transform: scale(1.1);
+  }
+
+}

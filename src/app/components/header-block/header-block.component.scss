@@ -1,0 +1,60 @@
+.container {
+  background: rgb(20, 25, 28);
+  // padding: 2.5%;
+}
+
+.main-header {
+  color: rgb(89, 95, 97);
+  display: flex;
+  justify-content: space-between;
+  padding: 2%;
+
+  h1 {
+    color: rgb(207, 207, 207);
+    font-size: 30px;
+  }
+
+  ul {
+    display: flex;
+
+    li {
+      margin: 10px;
+
+      &:hover {
+        color: rgb(207, 207, 207);
+      }
+
+      a {
+        color: rgb(89, 95, 97);
+
+        &:hover {
+          color: rgb(207, 207, 207);
+        }
+      }
+    }
+  }
+  border-bottom: 1px solid rgb(77, 83, 85);
+}
+
+.navbar {
+  color: rgb(207, 207, 207);
+  padding: 2%;
+  margin-top: 1px;
+  border-bottom: 1px solid rgb(78, 84, 85);
+  border-top: 1px solid rgb(77, 83, 86);
+
+  ul {
+    padding: 0 20%;
+    display: flex;
+    justify-content: space-around;
+    li {
+      padding: 0 10px;
+
+      transition: 0.15s all ease-in-out;
+      &:hover {
+        color: rgb(20, 25, 28);
+        background: rgb(207, 207, 207);
+      }
+    }
+  }
+}
