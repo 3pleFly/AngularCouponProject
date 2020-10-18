@@ -1,0 +1,16 @@
+  <form (ngSubmit)="loginProcess()" [formGroup]="loginForm">
+    <h2>Company</h2>
+    <input
+      type="text"
+      name="username"
+      formControlName="username"
+      placeholder="Email"
+    />
+    <input
+      type="password"
+      name="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+    <button type="submit">Enter</button>
+  </form>

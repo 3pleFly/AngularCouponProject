@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './services/auth.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,12 +8,17 @@ import { HeaderBlockComponent } from './components/header-block/header-block.com
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { CarouselMainComponent } from './components/carousel-main/carousel-main.component';
 import { ShowcaseComponent } from './components/showcase/showcase.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DualSigninComponent } from './components/dual-signin/dual-signin.component';
 import { DisplayCouponsComponent } from './components/display-coupons/display-coupons.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CompanyPageComponent } from './pages/company-page/company-page.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { CompanyloginComponent } from './pages/login/companylogin/companylogin.component';
+import { CustomerloginComponent } from './pages/login/customerlogin/customerlogin.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +31,26 @@ import { LoginComponent } from './pages/login/login.component';
     FooterComponent,
     MainPageComponent,
     LoginComponent,
+    CompanyPageComponent,
+    AdminPageComponent,
+    CompanyloginComponent,
+    CustomerloginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     IvyCarouselModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

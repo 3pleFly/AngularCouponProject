@@ -1,18 +1,18 @@
 <div class="container">
   <div class="main-header">
     <ul>
-      <li>Home</li>
+      <li><a [routerLink]="['/main']">Home</a></li>
       <li>About</li>
       <li>Contact</li>
     </ul>
     <!-- <img src="" alt="logo-image" /> -->
     <h1>Coupon ~project</h1>
-    <ul>
+    <ul *ngIf="displaySegment" >
       <li><a [routerLink]="['/login']">Sign In</a></li>
       <li>Search</li>
     </ul>
   </div>
-  <div class="navbar">
+  <div class="navbar" *ngIf="displaySegment">
     <ul>
       <li>Electricity</li>
       <li>Vacation</li>

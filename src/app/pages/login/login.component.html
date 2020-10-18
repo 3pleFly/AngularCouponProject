@@ -1,1 +1,20 @@
-<p>login works!</p>
+<app-header-block></app-header-block>
+<div class="container">
+  <div class="inner">
+    <h2>Login as a...</h2>
+    <div class="routes">
+      <a [routerLink]="['companylogin']">Company</a>
+      <a [routerLink]="['customerlogin']">Customer</a>
+    </div>
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</div>
+
+
+<div class="placeholder">
+
+</div>
+<app-footer></app-footer>
