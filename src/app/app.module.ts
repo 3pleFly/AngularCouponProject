@@ -19,6 +19,7 @@ import { CompanyPageComponent } from './pages/company-page/company-page.componen
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { CompanyloginComponent } from './pages/login/companylogin/companylogin.component';
 import { CustomerloginComponent } from './pages/login/customerlogin/customerlogin.component';
+import { CustomerPageComponent } from './pages/customer-page/customer-page.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CustomerloginComponent } from './pages/login/customerlogin/customerlogi
     AdminPageComponent,
     CompanyloginComponent,
     CustomerloginComponent,
+    CustomerPageComponent,
   ],
   imports: [
     BrowserModule,

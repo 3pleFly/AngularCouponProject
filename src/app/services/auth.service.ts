@@ -4,8 +4,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
-import jwt_decode from "jwt-decode";
-
+import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,18 +15,48 @@ export class AuthService {
   private loggedUser: string;
 
   constructor(private http: HttpClient) {}
+  login(
+    user: { username: string; password: string },
+    route: string
+  ): Observable<any> {
+    if (user.username === 'admin' && user.password === 'admin') {
+      return this.http.post(`${baseUrl}/public/admin`, user).pipe(
+        tap((response: ResponseDto<string>) =>
+          this.doLoginUser(user.username, response)
+        ),
+        mapTo(true),
+        catchError((error) => {
+          alert(error.error);
+          return of(false);
+        })
+      );
+    }
 
-  login(user: { username: string; password: string }): Observable<any> {
-    return this.http.post(`${baseUrl}/public/admin`, user).pipe(
-      tap((response: ResponseDto<string>) =>
-        this.doLoginUser(user.username, response)
-      ),
-      mapTo(true),
-      catchError((error) => {
-        alert(error.error);
-        return of(false);
-      })
-    );
+    if (route === '/login/companylogin') {
+      return this.http.post(`${baseUrl}/public/company`, user).pipe(
+        tap((response: ResponseDto<string>) =>
+          this.doLoginUser(user.username, response)
+        ),
+        mapTo(true),
+        catchError((error) => {
+          alert(error.error);
+          return of(false);
+        })
+      );
+    }
+
+    if (route === '/login/customerlogin') {
+      return this.http.post(`${baseUrl}/public/customer`, user).pipe(
+        tap((response: ResponseDto<string>) =>
+          this.doLoginUser(user.username, response)
+        ),
+        mapTo(true),
+        catchError((error) => {
+          alert(error.error);
+          return of(false);
+        })
+      );
+    }
   }
 
   logout() {

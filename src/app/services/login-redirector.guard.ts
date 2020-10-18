@@ -24,7 +24,7 @@ export class LoginRedirectorGuard implements CanActivate {
         case 'company':
           this.router.navigate(['/company']);
           break;
-        case 'custoemr':
+        case 'customer':
           this.router.navigate(['/customer']);
           break;
 

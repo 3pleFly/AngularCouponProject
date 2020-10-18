@@ -25,7 +25,7 @@ export class CustomerloginComponent implements OnInit {
 
   loginProcess() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe((result) => {
+      this.authService.login(this.loginForm.value, this.router.url).subscribe((result) => {
         if (result) {
           switch (this.authService.getCurrentScope()) {
             case 'admin':
@@ -34,7 +34,7 @@ export class CustomerloginComponent implements OnInit {
             case 'company':
               this.router.navigate(['/company']);
               break;
-            case 'custoemr':
+            case 'customer':
               this.router.navigate(['/customer']);
               break;
             default:

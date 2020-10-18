@@ -1,3 +1,4 @@
+import { CustomerPageComponent } from './pages/customer-page/customer-page.component';
 import { CustomerloginComponent } from './pages/login/customerlogin/customerlogin.component';
 import { CompanyloginComponent } from './pages/login/companylogin/companylogin.component';
 import { CompanyPageComponent } from './pages/company-page/company-page.component';
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: 'company',
     component: CompanyPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'customer',
+    component: CustomerPageComponent,
     canActivate: [AuthGuard],
   },
 

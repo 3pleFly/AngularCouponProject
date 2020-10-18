@@ -25,7 +25,7 @@ export class CompanyloginComponent implements OnInit {
 
   loginProcess() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe((result) => {
+      this.authService.login(this.loginForm.value, this.router.url).subscribe((result) => {
         if (result) {
           switch (this.authService.getCurrentScope()) {
             case 'admin':
