@@ -19,8 +19,8 @@ export class AuthGuard implements CanActivate {
       alert('Please login first');
       this.router.navigate(['/login']);
     }
-    if (state.url !== '/' + this.authService.getCurrentScope()) {
-      this.router.navigate([`/${this.authService.getCurrentScope()}`]);
+    if (state.url !== '/' + this.authService.getTokenScopeFromStorage()) {
+      this.router.navigate([`/${this.authService.getTokenScopeFromStorage()}`]);
     }
 
     return this.authService.isLoggedIn();

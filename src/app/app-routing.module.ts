@@ -1,3 +1,5 @@
+import { CustomerUiComponent } from './components/special-components/customer/customer-ui/customer-ui.component';
+import { AdminCompaniesUiComponent } from './components/special-components/admin/admin-companies-ui/admin-companies-ui.component';
 import { CustomerPageComponent } from './pages/customer-page/customer-page.component';
 import { CustomerloginComponent } from './pages/login/customerlogin/customerlogin.component';
 import { CompanyloginComponent } from './pages/login/companylogin/companylogin.component';
@@ -23,7 +25,12 @@ const routes: Routes = [
       { path: 'customerlogin', component: CustomerloginComponent },
     ],
   },
-  { path: 'admin', component: AdminPageComponent, canActivate: [AuthGuard] },
+  {
+    path: 'admin',
+    component: AdminPageComponent,
+    canActivate: [AuthGuard],
+    children: [{ path: 'companiesui', component: AdminCompaniesUiComponent }],
+  },
   {
     path: 'company',
     component: CompanyPageComponent,
@@ -33,6 +40,7 @@ const routes: Routes = [
     path: 'customer',
     component: CustomerPageComponent,
     canActivate: [AuthGuard],
+    children: [{ path: 'customerui', component: CustomerUiComponent }],
   },
 
   { path: '**', redirectTo: 'main' },

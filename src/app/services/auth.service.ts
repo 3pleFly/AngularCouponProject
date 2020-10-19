@@ -64,14 +64,18 @@ export class AuthService {
     localStorage.removeItem(this.authorization);
   }
 
-  decodeJwt(token: string): string {
-    let decodedToken = jwt_decode(token);
-    return decodedToken.scope;
+  decodeJwt(token: string) {
+    return jwt_decode(token);
   }
 
-  getCurrentScope(): string {
+  getTokenScopeFromStorage(): string {
     let token = localStorage.getItem(this.authorization);
-    return this.decodeJwt(token);
+    return this.decodeJwt(token).scope;
+  }
+
+  getTokenSubjectFromStorage() {
+    let token = localStorage.getItem(this.authorization);
+    return this.decodeJwt(token).sub;
   }
 
   getJwtToken() {

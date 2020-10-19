@@ -7,12 +7,15 @@
     </ul>
     <!-- <img src="" alt="logo-image" /> -->
     <h1>Coupon ~project</h1>
-    <ul *ngIf="displaySegment" >
-      <li><a [routerLink]="['/login']">Sign In</a></li>
-      <li>Search</li>
+    <ul>
+      <li *ngIf="!signedInUsername">
+        <a [routerLink]="['/login']">Sign In</a>
+      </li>
+      <li *ngIf="signedInUsername"> <a [routerLink]="['/company']">Welcome {{ signedInUsername }}</a></li>
+      <li *ngIf="signedInUsername">  <a [routerLink]="['/main']" (click)="logout()">Sign out</a></li>
     </ul>
   </div>
-  <div class="navbar" *ngIf="displaySegment">
+  <div class="navbar" *ngIf="displaySegmentForMain">
     <ul>
       <li>Electricity</li>
       <li>Vacation</li>

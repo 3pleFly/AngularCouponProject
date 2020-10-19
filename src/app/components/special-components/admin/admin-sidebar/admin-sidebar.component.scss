@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap");
+.container {
+  background: #ff512f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f09819,
+    #ff512f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f09819,
+    #ff512f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  -webkit-box-shadow: 10px 0px 24px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 0px 24px -9px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 0px 24px -9px rgba(0, 0, 0, 0.75);
+
+  float: left;
+  width: 20vw;
+  height: 60vh;
+  padding: 1%;
+  h3 {
+    padding: 6%;
+    text-align: center;
+    border-bottom: 1px solid white;
+    font-family: "Quicksand", sans-serif;
+    color: white;
+  }
+
+  ul {
+    padding: 5%;
+    li {
+      cursor: pointer;
+      border-radius: 60px;
+      margin: 20% 5%;
+      padding: 4% 10%;
+      border: 1px white solid;
+      font-family: "Quicksand", sans-serif;
+      color: white;
+      transition: 0.25s all ease-in-out;
+
+      &:hover {
+        background: rgb(255, 255, 255);
+        color: #f05d19;
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+import { User } from './../../models/user.module';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,19 +9,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./header-block.component.scss'],
 })
 export class HeaderBlockComponent implements OnInit {
-  displaySegment: boolean;
-
-  constructor(private router: Router) {}
+  displaySegmentForOther: boolean;
+  displaySegmentForMain: boolean;
+  signedInUsername: User;
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.checkRoute();
+    this.checkRouteForMain();
+    if (this.authService.isLoggedIn()) {
+      this.signedInUsername = this.authService.getTokenSubjectFromStorage();
+    }
   }
 
-  checkRoute(): void {
-    if (this.router.url === '/main') {
-      this.displaySegment = true;
+  checkRouteForMain(): void {
+    if (this.router.url === '/main' ) {
+      this.displaySegmentForMain = true;
     } else {
-      this.displaySegment = false;
+      this.displaySegmentForMain = false;
     }
+  }
+
+  logout(): void {
+    this.router.navigate(['/main']);
+    this.authService.logout();
   }
 }

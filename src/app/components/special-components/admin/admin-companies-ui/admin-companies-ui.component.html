@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Companies Control Interface</h1>
+  <input type="text" placeholder="Start typing" />
+
+  <div class="companies-if" *ngIf="allCompanies">
+    <div class="companies">
+      <div class="company" *ngFor="let company of allCompanies">
+        <h2>{{ company.name }}</h2>
+        <h3>{{ company.email }}</h3>
+        <h3>{{ company.id }}</h3>
+      </div>
+    </div>
+  </div>
+</div>

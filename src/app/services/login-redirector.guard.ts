@@ -17,7 +17,7 @@ export class LoginRedirectorGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.authService.isLoggedIn()) {
-      switch (this.authService.getCurrentScope()) {
+      switch (this.authService.getTokenScopeFromStorage()) {
         case 'admin':
           this.router.navigate(['/admin']);
           break;

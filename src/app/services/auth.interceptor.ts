@@ -19,7 +19,6 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-
     if (this.authService.getJwtToken()) {
       request = this.addToken(request, this.authService.getJwtToken());
     }
@@ -38,7 +37,6 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   handleError(error: HttpErrorResponse): Observable<never> {
-    console.log(error);
     return throwError(error);
   }
 }

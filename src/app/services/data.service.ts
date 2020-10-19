@@ -1,6 +1,11 @@
+import { ResponseDto } from './../models/responseDto.module ';
+import { Company } from './../models/company.module';
 import { Coupon } from './../models/coupon.module';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { baseUrl } from 'src/environments/environment';
+import { Customer } from '../models/customer.module';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +13,19 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
   constructor(private httpClient: HttpClient) {}
 
-  // getCoupons(): Observable<Coupon[]> {
-  //   const url = 'http://localhost:8080/public/coupons';
-  //   return this.httpClient.get<Coupon[]>(url);
-  // }
+  getAllCompanies(): Observable<ResponseDto<Company[]>> {
+    const url = `${baseUrl}/admin/companies`;
+    return this.httpClient.get<ResponseDto<Company[]>>(url);
+  }
+
+  getOneCustomer(): Observable<ResponseDto<Customer>> {
+    const url = `${baseUrl}/customer/customer`;
+    return this.httpClient.get<ResponseDto<Customer>>(url);
+  }
+
+
+
+
 
   getCouponsStatic(): Coupon[] {
     let coupons: Coupon[];
