@@ -1,0 +1,31 @@
+<form (ngSubmit)="addCustomer()" [formGroup]="addCustomerFormProfile">
+  <h2>Add a new customer</h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+  <input
+    type="text"
+    name="firstName"
+    formControlName="firstName"
+    placeholder="Insert first-name"
+  />
+  <input
+    type="text"
+    name="lastName"
+    formControlName="lastName"
+    placeholder="Insert last-name"
+  />
+
+  <input
+    type="text"
+    name="email"
+    formControlName="email"
+    placeholder="Insert email"
+  />
+  <input
+    type="password"
+    name="password"
+    formControlName="password"
+    placeholder="Insert password"
+  />
+  <br />
+  <button type="submit">Add Customer</button>
+</form>

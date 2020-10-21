@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+.container {
+  -webkit-box-shadow: 1px 0px 17px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 0px 17px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 0px 17px 1px rgba(0, 0, 0, 0.75);
+  background: #ff512f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f09819,
+    #ff512f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f09819,
+    #ff512f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border: 1px solid rgb(255, 102, 0);
+  border-radius: 25px;
+
+  position: absolute;
+  left: 73%;
+  top: 130%;
+  padding: 2%;
+  width: 25%;
+
+  ul {
+    li {
+      cursor: pointer;
+      background: none;
+      border-radius: 60px;
+      margin: 8% 5%;
+      padding: 4% 18%;
+      border: 1px white solid;
+      font-family: "Noto Sans", sans-serif;
+      color: black;
+      transition: 0.25s all ease-in-out;
+
+      a {
+        color: white;
+      }
+
+      &:hover {
+        background: white;
+
+        a {
+          color: rgb(255, 102, 0);
+        }
+      }
+    }
+  }
+}

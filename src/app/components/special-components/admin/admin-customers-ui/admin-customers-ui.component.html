@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 >Customer's Control Interface</h1>
+  <input
+    #searchField
+    type="text"
+    placeholder="Start typing"
+    [(ngModel)]="filterTerm"
+    autocomplete="off"
+  />
+  <div class="companies-if" *ngIf="allCustomers">
+    <div class="companies">
+      <div class="company" *ngFor="let customer of allCustomers | filter:filterTerm">
+        <p><span style="font-weight: 800;">Name:</span>  {{ customer.firstName }}</p>
+        <p><span style="font-weight: 800;">Email:</span> {{ customer.email }}</p>
+        <p><span style="font-weight: 800;">ID:</span> {{ customer.id }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

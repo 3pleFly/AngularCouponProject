@@ -1,9 +1,9 @@
 <div class="container">
   <h3>Admin Interface</h3>
   <ul>
-    <li #company (click)="reRoute(company)">Companies</li>
-    <li #customer (click)="reRoute(customer)">Customers</li>
-    <li #category (click)="reRoute(category)">Categories</li>
-
+    <li>Main</li>
+    <li><a [routerLink]="['/admin/companiesui']">Companies</a></li>
+    <li><a [routerLink]="['/admin/customersui']">Customers</a></li>
+    <li><a [routerLink]="['/admin/categoriesui']">Categories</a></li>
   </ul>
 </div>

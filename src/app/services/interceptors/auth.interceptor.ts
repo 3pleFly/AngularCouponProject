@@ -1,4 +1,5 @@
-import { AuthService } from './auth.service';
+import { ResponseDto } from './../../models/responseDto.module ';
+import { AuthService } from '../auth.service';
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import {
@@ -13,6 +14,7 @@ import { Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+
   constructor(private authService: AuthService) {}
 
   intercept(
@@ -23,9 +25,15 @@ export class AuthInterceptor implements HttpInterceptor {
       request = this.addToken(request, this.authService.getJwtToken());
     }
 
-    return next
-      .handle(request)
-      .pipe(catchError((error) => this.handleError(error)));
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMsg = '';
+        console.log('Error has been caught:');
+        errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+        console.log(errorMsg);
+        return throwError(errorMsg);
+      })
+    );
   }
 
   private addToken(request: HttpRequest<any>, token: string) {

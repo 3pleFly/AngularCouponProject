@@ -1,0 +1,15 @@
+<form (ngSubmit)="deleteCompany()" [formGroup]="deleteCompanyFormProfile">
+  <h2>Delete </h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+
+  <select formControlName="companyID" class="option">
+    <option selected ></option>
+    <option
+      *ngFor="let company of allCompanies"
+    >
+      {{ company.id }}:{{ company.name }}
+    </option>
+  </select>
+  <br/>
+  <button type="submit">Delete</button>
+</form>

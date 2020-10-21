@@ -1,0 +1,27 @@
+<form (ngSubmit)="editCompany()" [formGroup]="editCompanyFormProfile">
+  <h2>Edit</h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+
+  <select formControlName="companyID" class="option">
+    <option selected ></option>
+    <option
+      *ngFor="let company of allCompanies"
+    >
+      {{ company.id }}:{{ company.name }}
+    </option>
+  </select>
+  <input
+    type="text"
+    name="email"
+    formControlName="email"
+    placeholder="Insert email"
+  />
+  <input
+    type="password"
+    name="password"
+    formControlName="password"
+    placeholder="Insert password"
+  />
+  <br />
+  <button type="submit">Submit changes</button>
+</form>

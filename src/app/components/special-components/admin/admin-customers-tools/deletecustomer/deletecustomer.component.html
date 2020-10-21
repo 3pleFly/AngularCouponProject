@@ -1,0 +1,11 @@
+<form (ngSubmit)="deleteCustomer()" [formGroup]="deleteCustomerFormProfile">
+  <h2>Edit</h2>
+  <input
+    type="text"
+    name="firstName"
+    formControlName="firstName"
+    placeholder="Insert customer ID"
+  />
+  <br />
+  <button type="submit">Delete</button>
+</form>

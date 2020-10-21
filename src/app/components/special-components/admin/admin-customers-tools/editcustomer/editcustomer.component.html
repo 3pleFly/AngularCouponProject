@@ -1,0 +1,30 @@
+<form (ngSubmit)="editCustomer()" [formGroup]="editCustomerFormProfile">
+  <h2>Edit</h2>
+  <input
+    type="text"
+    name="firstName"
+    formControlName="firstName"
+    placeholder="Insert first-name"
+  />
+  <input
+    type="text"
+    name="lastName"
+    formControlName="lastName"
+    placeholder="Insert last-name"
+  />
+
+  <input
+    type="text"
+    name="email"
+    formControlName="email"
+    placeholder="Insert email"
+  />
+  <input
+    type="password"
+    name="password"
+    formControlName="password"
+    placeholder="Insert password"
+  />
+  <br />
+  <button type="submit">Submit Changes</button>
+</form>

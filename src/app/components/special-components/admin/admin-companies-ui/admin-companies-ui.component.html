@@ -1,14 +1,20 @@
 <div class="container">
-  <h1>Companies Control Interface</h1>
-  <input type="text" placeholder="Start typing" />
-
+  <h1 >Companies's Control Interface</h1>
+  <input
+    #searchField
+    type="text"
+    placeholder="Start typing"
+    [(ngModel)]="filterTerm"
+    autocomplete="off"
+  />
   <div class="companies-if" *ngIf="allCompanies">
     <div class="companies">
-      <div class="company" *ngFor="let company of allCompanies">
-        <h2>{{ company.name }}</h2>
-        <h3>{{ company.email }}</h3>
-        <h3>{{ company.id }}</h3>
+      <div class="company" *ngFor="let company of allCompanies | filter:filterTerm">
+        <p><span style="font-weight: 800;">Name:</span>  {{ company.name }}</p>
+        <p><span style="font-weight: 800;">Email:</span> {{ company.email }}</p>
+        <p><span style="font-weight: 800;">ID:</span> {{ company.id }}</p>
       </div>
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>
