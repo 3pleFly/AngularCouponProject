@@ -43,6 +43,11 @@ export class AddcustomerComponent implements OnInit {
           }, 5000);
         },
         () => {
+          this.adminService
+            .getAllCustomers()
+            .subscribe((response) =>
+              this.adminService.subjectForGetAllCustomers.next(response.t)
+            );
           setTimeout(() => {
             this.serverMessage = null;
           }, 5000);

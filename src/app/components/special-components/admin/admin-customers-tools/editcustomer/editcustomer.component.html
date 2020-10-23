@@ -1,12 +1,28 @@
 <form (ngSubmit)="editCustomer()" [formGroup]="editCustomerFormProfile">
   <h2>Edit</h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+
+  <select
+    (change)="setCustomerInputDetails($event.target.value)"
+    formControlName="customer"
+    class="option"
+  >
+    <option>Choose Customer</option>
+
+    <option *ngFor="let customer of allCustomers">
+      {{ customer.firstName + " " + customer.lastName }}
+    </option>
+  </select>
+
   <input
+    *ngIf="selectedCustomer"
     type="text"
     name="firstName"
     formControlName="firstName"
     placeholder="Insert first-name"
   />
   <input
+    *ngIf="selectedCustomer"
     type="text"
     name="lastName"
     formControlName="lastName"
@@ -14,12 +30,14 @@
   />
 
   <input
+    *ngIf="selectedCustomer"
     type="text"
     name="email"
     formControlName="email"
     placeholder="Insert email"
   />
   <input
+    *ngIf="selectedCustomer"
     type="password"
     name="password"
     formControlName="password"

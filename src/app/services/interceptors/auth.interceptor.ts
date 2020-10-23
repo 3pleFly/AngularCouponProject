@@ -25,15 +25,15 @@ export class AuthInterceptor implements HttpInterceptor {
       request = this.addToken(request, this.authService.getJwtToken());
     }
 
-    return next.handle(request).pipe(
-      catchError((error: HttpErrorResponse) => {
-        let errorMsg = '';
-        console.log('Error has been caught:');
-        errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
-        console.log(errorMsg);
-        return throwError(errorMsg);
-      })
-    );
+    return next.handle(request);
+    // .pipe(
+    //   catchError((error: HttpErrorResponse) => {
+    //     let errorMsg = '';
+    //     console.log('Error has been caught:');
+    //     errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+    //     return throwError(errorMsg);
+    //   })
+    // );
   }
 
   private addToken(request: HttpRequest<any>, token: string) {
@@ -44,7 +44,4 @@ export class AuthInterceptor implements HttpInterceptor {
     });
   }
 
-  handleError(error: HttpErrorResponse): Observable<never> {
-    return throwError(error);
-  }
 }

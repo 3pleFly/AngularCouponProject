@@ -14,7 +14,7 @@ export class EditcompanyComponent implements OnInit {
   serverMessage: string;
 
   editCompanyFormProfile = this.formBuilder.group({
-    companyID: [null, Validators.required],
+    company: [null, Validators.required],
     email: [null, Validators.required],
     password: [null, Validators.required],
   });
@@ -31,18 +31,18 @@ export class EditcompanyComponent implements OnInit {
   }
 
   editCompany(): void {
-    const companyID = this.editCompanyFormProfile.value.companyID.substring(0, 1);
+    const companyIDandName = this.editCompanyFormProfile.value.company.split(':');
     if (this.editCompanyFormProfile.valid) {
       const company: Company = {
-        id: companyID,
-        name: this.editCompanyFormProfile.value.name,
+        id: companyIDandName[0],
+        name: companyIDandName[1],
         email: this.editCompanyFormProfile.value.email,
         password: this.editCompanyFormProfile.value.password,
         coupons: [],
       };
       this.adminService.updateCompany(company).subscribe(
         (response) => (this.serverMessage = response.message),
-        () => this,
+        (error) => (this.serverMessage = error.error.message),
         () => {
           this.adminService
             .getAllCompanies()
@@ -51,6 +51,7 @@ export class EditcompanyComponent implements OnInit {
             );
           setTimeout(() => {
             this.serverMessage = null;
+            this.editCompanyFormProfile.reset();
           }, 5000);
         }
       );

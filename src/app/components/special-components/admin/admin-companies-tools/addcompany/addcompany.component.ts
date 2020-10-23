@@ -34,9 +34,15 @@ export class AddcompanyComponent implements OnInit {
       };
       this.adminService.addCompany(company).subscribe(
         (response) => (this.serverMessage = response.message),
-        () => this,
+        (error) => (this.serverMessage = error.error.message),
         () => {
+          this.adminService
+            .getAllCompanies()
+            .subscribe((response) =>
+              this.adminService.subjectForGetAllCompanies.next(response.t)
+            );
           setTimeout(() => {
+            this.addCompanyFormProfile.reset();
             this.serverMessage = null;
           }, 5000);
         }

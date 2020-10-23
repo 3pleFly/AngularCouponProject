@@ -2,7 +2,7 @@
   <h2>Edit</h2>
   <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
 
-  <select formControlName="companyID" class="option">
+  <select formControlName="company" class="option">
     <option selected ></option>
     <option
       *ngFor="let company of allCompanies"

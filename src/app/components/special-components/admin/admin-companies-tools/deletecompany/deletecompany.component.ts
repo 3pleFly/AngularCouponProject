@@ -35,7 +35,7 @@ export class DeletecompanyComponent implements OnInit {
       );
       this.adminService.deleteCompany(companyID).subscribe(
         (response) => (this.serverMessage = response.message),
-        () => this,
+        (error) => (this.serverMessage = error.error.message),
         () => {
           this.adminService
             .getAllCompanies()
@@ -43,6 +43,7 @@ export class DeletecompanyComponent implements OnInit {
               this.adminService.subjectForGetAllCompanies.next(response.t)
             );
           setTimeout(() => {
+            this.deleteCompanyFormProfile.reset();
             this.serverMessage = null;
           }, 5000);
         }

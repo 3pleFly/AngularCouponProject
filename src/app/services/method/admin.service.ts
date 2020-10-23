@@ -42,6 +42,11 @@ export class AdminService {
     return this.httpClient.post<ResponseDto<Customer>>(url, customer);
   }
 
+  updateCustomer(customer: Customer): Observable<ResponseDto<Customer>> {
+    const url = `${baseUrl}/admin/updatecustomer`;
+    return this.httpClient.put<ResponseDto<Customer>>(url, customer);
+  }
+
   getAllCustomers(): Observable<ResponseDto<Customer[]>> {
     const url = `${baseUrl}/admin/customers`;
     return this.httpClient.get<ResponseDto<Customer[]>>(url);
