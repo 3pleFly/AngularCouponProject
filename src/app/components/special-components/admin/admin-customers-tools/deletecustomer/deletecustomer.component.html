@@ -1,11 +1,16 @@
 <form (ngSubmit)="deleteCustomer()" [formGroup]="deleteCustomerFormProfile">
-  <h2>Edit</h2>
-  <input
-    type="text"
-    name="firstName"
-    formControlName="firstName"
-    placeholder="Insert customer ID"
-  />
+  <h2>Delete</h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+  <select
+    (change)="setSelectedCustomer($event.target.value)"
+    formControlName="customer"
+    class="option"
+  >
+    <option>Choose Customer</option>
+    <option *ngFor="let customer of allCustomers">
+      {{ customer.firstName + ' ' + customer.lastName }}
+    </option>
+  </select>
   <br />
   <button type="submit">Delete</button>
 </form>

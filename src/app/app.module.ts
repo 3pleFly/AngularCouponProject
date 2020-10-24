@@ -1,3 +1,11 @@
+import { AdminCustomersToolsComponent } from './components/special-components/admin/admin-customers-tools/admin-customers-tools.component';
+import { DeletecustomerComponent } from './components/special-components/admin/admin-customers-tools/deletecustomer/deletecustomer.component';
+import { EditcustomerComponent } from './components/special-components/admin/admin-customers-tools/editcustomer/editcustomer.component';
+import { AddcustomerComponent } from './components/special-components/admin/admin-customers-tools/addcustomer/addcustomer.component';
+import { DeletecompanyComponent } from './components/special-components/admin/admin-companies-tools/deletecompany/deletecompany.component';
+import { EditcompanyComponent } from './components/special-components/admin/admin-companies-tools/editcompany/editcompany.component';
+import { AddcompanyComponent } from './components/special-components/admin/admin-companies-tools/addcompany/addcompany.component';
+import { AdminCompaniesToolsComponent } from './components/special-components/admin/admin-companies-tools/admin-companies-tools.component';
 import { AuthInterceptor } from './services/interceptors/auth.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -25,21 +33,14 @@ import { AdminCompaniesUiComponent } from './components/special-components/admin
 import { CustomerSidebarComponent } from './components/special-components/customer/customer-sidebar/customer-sidebar.component';
 import { CustomerUiComponent } from './components/special-components/customer/customer-ui/customer-ui.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { AdminCompaniesToolsComponent } from './components/special-components/admin/admin-companies-tools/admin-companies-tools.component';
-import { AddcompanyComponent } from './components/special-components/admin/admin-companies-tools/addcompany/addcompany.component';
-import { EditcompanyComponent } from './components/special-components/admin/admin-companies-tools/editcompany/editcompany.component';
-import { DeletecompanyComponent } from './components/special-components/admin/admin-companies-tools/deletecompany/deletecompany.component';
-import { AddcustomerComponent } from './components/special-components/admin/admin-customers-tools/addcustomer/addcustomer.component';
-import { EditcustomerComponent } from './components/special-components/admin/admin-customers-tools/editcustomer/editcustomer.component';
-import { DeletecustomerComponent } from './components/special-components/admin/admin-customers-tools/deletecustomer/deletecustomer.component';
-import { AdminCustomersUiComponent } from './components/special-components/admin/admin-customers-ui/admin-customers-ui.component';
-import { AdminCustomersToolsComponent } from './components/special-components/admin/admin-customers-tools/admin-customers-tools.component';
-import { AdminCategoriesUiComponent } from './components/special-components/admin/admin-categories-ui/admin-categories-ui.component';
-import { AdminCategoriesToolsComponent } from './components/special-components/admin/admin-categories-tools/admin-categories-tools.component';
-import { AddcategoryComponent } from './components/special-components/admin/admin-categories-tools/addcategory/addcategory.component';
-import { EditcategoryComponent } from './components/special-components/admin/admin-categories-tools/editcategory/editcategory.component';
-import { DeletecategoryComponent } from './components/special-components/admin/admin-categories-tools/deletecategory/deletecategory.component';
 
+import { AdminCustomersUiComponent } from './components/special-components/admin/admin-customers-ui/admin-customers-ui.component';
+import { AdminCategoriesUiComponent } from './components/special-components/admin/admin-categories-ui/admin-categories-ui.component';
+import { AdminMainUiComponent } from './pages/admin-page/components/admin-main-ui/admin-main-ui.component';
+import { AdminCategoriesToolsComponent } from './pages/admin-page/components/tools/admin-categories-tools/admin-categories-tools.component';
+import { AddcategoryComponent } from './pages/admin-page/components/tools/addcategory/addcategory.component';
+import { EditcategoryComponent } from './pages/admin-page/components/tools/editcategory/editcategory.component';
+import { DeletecategoryComponent } from './pages/admin-page/components/tools/deletecategory/deletecategory.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,6 @@ import { DeletecategoryComponent } from './components/special-components/admin/a
     AdminSidebarComponent,
     AdminCompaniesUiComponent,
     CustomerSidebarComponent,
-    CustomerUiComponent,
     AdminCompaniesToolsComponent,
     AddcompanyComponent,
     EditcompanyComponent,
@@ -68,9 +68,12 @@ import { DeletecategoryComponent } from './components/special-components/admin/a
     AddcustomerComponent,
     EditcustomerComponent,
     DeletecustomerComponent,
-    AdminCustomersUiComponent,
     AdminCustomersToolsComponent,
+    CustomerUiComponent,
+    AdminCompaniesToolsComponent,
+    AdminCustomersUiComponent,
     AdminCategoriesUiComponent,
+    AdminMainUiComponent,
     AdminCategoriesToolsComponent,
     AddcategoryComponent,
     EditcategoryComponent,
@@ -89,8 +92,8 @@ import { DeletecategoryComponent } from './components/special-components/admin/a
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

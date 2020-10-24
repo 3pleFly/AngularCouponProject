@@ -1,0 +1,25 @@
+<form (ngSubmit)="editCategory()" [formGroup]="editCategoryFormProfile">
+  <h2>Edit</h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+
+  <select
+    (change)="setCategoryInputDetails($event.target.value)"
+    formControlName="optionCategory"
+    class="option"
+  >
+  <option>Choose Category</option>
+  <option *ngFor="let category of allCategories">
+      {{ category.category }}
+    </option>
+  </select>
+  <input
+  *ngIf="selectedCategory"
+
+    type="text"
+    name="email"
+    formControlName="category"
+    placeholder="Edit category name"
+  />
+  <br />
+  <button [disabled]="!editCategoryFormProfile.valid" type="submit">Submit changes</button>
+</form>

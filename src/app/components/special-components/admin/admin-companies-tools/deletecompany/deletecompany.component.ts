@@ -1,7 +1,6 @@
 import { Company } from './../../../../../models/company.module';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
 import { AdminService } from 'src/app/services/method/admin.service';
 
 @Component({
@@ -10,11 +9,12 @@ import { AdminService } from 'src/app/services/method/admin.service';
   styleUrls: ['./deletecompany.component.scss'],
 })
 export class DeletecompanyComponent implements OnInit {
+  selectedCompany: Company;
   serverMessage: string;
   allCompanies: Company[];
 
   deleteCompanyFormProfile = this.formBuilder.group({
-    companyID: [null, Validators.required],
+    company: [null],
   });
   constructor(
     private formBuilder: FormBuilder,
@@ -27,13 +27,23 @@ export class DeletecompanyComponent implements OnInit {
       .subscribe((response) => (this.allCompanies = response.t));
   }
 
-  deleteCompany(): void {
-    if (this.deleteCompanyFormProfile.valid) {
-      const companyID = this.deleteCompanyFormProfile.value.companyID.substring(
-        0,
-        1
+  getSelectedCompany(name: string): Company {
+    return this.allCompanies.find((company) => company.name === name);
+  }
+
+  setSelectCompany(selected: any): void {
+    if (selected !== 'Choose Company') {
+      this.selectedCompany = this.getSelectedCompany(
+        this.deleteCompanyFormProfile.value.company
       );
-      this.adminService.deleteCompany(companyID).subscribe(
+    } else {
+      this.selectedCompany = null;
+    }
+  }
+
+  deleteCompany(): void {
+    if (this.selectedCompany) {
+      this.adminService.deleteCompany(this.selectedCompany.id).subscribe(
         (response) => (this.serverMessage = response.message),
         (error) => (this.serverMessage = error.error.message),
         () => {
@@ -42,8 +52,9 @@ export class DeletecompanyComponent implements OnInit {
             .subscribe((response) =>
               this.adminService.subjectForGetAllCompanies.next(response.t)
             );
+          this.selectedCompany = null;
+          this.deleteCompanyFormProfile.reset();
           setTimeout(() => {
-            this.deleteCompanyFormProfile.reset();
             this.serverMessage = null;
           }, 5000);
         }

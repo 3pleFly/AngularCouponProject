@@ -1,0 +1,12 @@
+<form (ngSubmit)="addCategory()" [formGroup]="addCategoryFormProfile">
+  <h2>Add</h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+  <input
+    type="text"
+    name="category"
+    formControlName="category"
+    placeholder="Insert category name"
+  />
+  <br />
+  <button type="submit">Add category</button>
+</form>

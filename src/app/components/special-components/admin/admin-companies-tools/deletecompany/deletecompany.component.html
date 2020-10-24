@@ -2,8 +2,8 @@
   <h2>Delete </h2>
   <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
 
-  <select formControlName="companyID" class="option">
-    <option selected ></option>
+  <select (change)="setSelectCompany($event.target.value)" formControlName="company" class="option">
+    <option>Choose Company</option>
     <option
       *ngFor="let company of allCompanies"
     >

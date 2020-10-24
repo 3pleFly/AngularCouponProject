@@ -47,6 +47,26 @@ export class AdminService {
     return this.httpClient.put<ResponseDto<Customer>>(url, customer);
   }
 
+  deleteCustomer(customerID: number): Observable<ResponseDto<string>> {
+    const url = `${baseUrl}/admin/deletecustomer/${customerID}`;
+    return this.httpClient.delete<ResponseDto<string>>(url);
+  }
+
+  addCategory(category: Category): Observable<ResponseDto<Category>> {
+    const url = `${baseUrl}/admin/addcategory`;
+    return this.httpClient.post<ResponseDto<Category>>(url, category);
+  }
+
+  updateCategory(category: Category): Observable<ResponseDto<Category>> {
+    const url = `${baseUrl}/admin/updatecategory`;
+    return this.httpClient.put<ResponseDto<Category>>(url, category);
+  }
+
+  deleteCategory(categoryID: number): Observable<ResponseDto<string>> {
+    const url = `${baseUrl}/admin/deletecategory/${categoryID}`;
+    return this.httpClient.delete<ResponseDto<string>>(url);
+  }
+
   getAllCustomers(): Observable<ResponseDto<Customer[]>> {
     const url = `${baseUrl}/admin/customers`;
     return this.httpClient.get<ResponseDto<Customer[]>>(url);
@@ -56,4 +76,6 @@ export class AdminService {
     const url = `${baseUrl}/admin/categories`;
     return this.httpClient.get<ResponseDto<Category[]>>(url);
   }
+
+
 }

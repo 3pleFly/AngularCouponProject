@@ -1,0 +1,17 @@
+<form (ngSubmit)="deleteCategory()" [formGroup]="deleteCategoryFormProfile">
+  <h2>Delete</h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+
+  <select
+    (change)="setSelectCategory($event.target.value)"
+    formControlName="category"
+    class="option"
+  >
+    <option>Choose Category</option>
+    <option *ngFor="let category of allCategories">
+      {{ category.category }}
+    </option>
+  </select>
+  <br />
+  <button type="submit">Delete</button>
+</form>

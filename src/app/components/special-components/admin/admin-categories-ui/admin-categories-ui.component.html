@@ -10,7 +10,7 @@
   <div class="companies-if" *ngIf="allCategories">
     <div class="companies">
       <div class="company" *ngFor="let category of allCategories | filter:filterTerm">
-        <p><span style="font-weight: 800;">Category:</span> {{ category.name }}</p>
+        <p><span style="font-weight: 800;">Category:</span> {{ category.category }}</p>
 
       </div>
     </div>

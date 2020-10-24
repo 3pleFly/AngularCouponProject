@@ -40,20 +40,19 @@
       color: black;
       transition: 0.25s all ease-in-out;
       color: white;
+      text-align: center;
       &:hover {
         background: rgb(255, 255, 255);
         color: #f05d19;
         a {
           color: #f05d19;
-
         }
-
       }
 
       a {
         color: white;
-
       }
     }
   }
 }
+
