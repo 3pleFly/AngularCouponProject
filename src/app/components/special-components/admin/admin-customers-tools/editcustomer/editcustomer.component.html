@@ -44,5 +44,7 @@
     placeholder="Insert password"
   />
   <br />
-  <button type="submit">Submit Changes</button>
+  <button [disabled]="!editCustomerFormProfile.valid" type="submit">
+    Submit Changes
+  </button>
 </form>

@@ -15,14 +15,13 @@ export class EditcustomerComponent implements OnInit {
   selectedCustomer: Customer;
 
   editCustomerFormProfile = this.formBuilder.group({
-    customer: [null, Validators.required],
-    firstName: [null],
-    lastName: [null],
-    email: [null],
-    password: [null],
+    customer: [null],
+    firstName: ['', Validators.maxLength(30)],
+    lastName: [null, Validators.maxLength(30)],
+    email: [null, Validators.maxLength(100)],
+    password: [null, Validators.maxLength(200)],
   });
   constructor(
-    private dataService: DataService,
     private formBuilder: FormBuilder,
     private adminService: AdminService
   ) {}
@@ -34,7 +33,7 @@ export class EditcustomerComponent implements OnInit {
   }
 
   setCustomerInputDetails(selected: any): void {
-    if (selected !== 'Choose Website') {
+    if (selected !== 'Choose Customer') {
       this.selectedCustomer = this.getSelectedCustomer(
         this.editCustomerFormProfile.value.customer
       );
@@ -47,6 +46,8 @@ export class EditcustomerComponent implements OnInit {
       this.editCustomerFormProfile.controls.email.setValue(
         this.selectedCustomer.email
       );
+    } else {
+      this.selectedCustomer = null;
     }
   }
 
@@ -57,45 +58,52 @@ export class EditcustomerComponent implements OnInit {
     );
   }
 
-  validateForm(): void {
-    if (!this.editCustomerFormProfile.value.firstName) {
-      this.editCustomerFormProfile.value.firstName = this.selectedCustomer.firstName;
-    }
+  validateForm(): boolean {
+    if (this.selectedCustomer !== null) {
+      if (!this.editCustomerFormProfile.value.firstName) {
+        this.editCustomerFormProfile.value.firstName = this.selectedCustomer.firstName;
+      }
 
-    if (!this.editCustomerFormProfile.value.lastName) {
-      this.editCustomerFormProfile.value.lastName = this.selectedCustomer.lastName;
-    }
+      if (!this.editCustomerFormProfile.value.lastName) {
+        this.editCustomerFormProfile.value.lastName = this.selectedCustomer.lastName;
+      }
 
-    if (!this.editCustomerFormProfile.value.email) {
-      this.editCustomerFormProfile.value.email = this.selectedCustomer.email;
+      if (!this.editCustomerFormProfile.value.email) {
+        this.editCustomerFormProfile.value.email = this.selectedCustomer.email;
+      }
+      return true;
     }
+    return false;
   }
 
   editCustomer(): void {
-    this.validateForm();
-    const customer: Customer = {
-      id: this.selectedCustomer.id,
-      firstName: this.editCustomerFormProfile.value.firstName,
-      lastName: this.editCustomerFormProfile.value.lastName,
-      email: this.editCustomerFormProfile.value.email,
-      password: this.editCustomerFormProfile.value.password,
-      coupons: [],
-    };
-    this.adminService.updateCustomer(customer).subscribe(
-      (response) => (this.serverMessage = response.message),
-      (error) => (this.serverMessage = error.error.message),
-      () => {
-        this.adminService.getAllCustomers().subscribe((response) => {
-          this.adminService.subjectForGetAllCustomers.next(response.t);
-          this.allCustomers = response.t;
-        });
-        this.editCustomerFormProfile.reset();
-        this.selectedCustomer = null;
-        setTimeout(() => {
-          this.serverMessage = null;
+    const formValidity = this.validateForm();
 
-        }, 5000);
-      }
-    );
+    if (formValidity) {
+      const customer: Customer = {
+        id: this.selectedCustomer.id,
+        firstName: this.editCustomerFormProfile.value.firstName,
+        lastName: this.editCustomerFormProfile.value.lastName,
+        email: this.editCustomerFormProfile.value.email,
+        password: this.editCustomerFormProfile.value.password,
+        coupons: [],
+      };
+
+      this.adminService.updateCustomer(customer).subscribe(
+        (response) => (this.serverMessage = response.message),
+        (error) => (this.serverMessage = error.error.message),
+        () => {
+          this.adminService.getAllCustomers().subscribe((response) => {
+            this.adminService.subjectForGetAllCustomers.next(response.t);
+            this.allCustomers = response.t;
+          });
+          this.editCustomerFormProfile.reset();
+          this.selectedCustomer = null;
+          setTimeout(() => {
+            this.serverMessage = null;
+          }, 5000);
+        }
+      );
+    }
   }
 }

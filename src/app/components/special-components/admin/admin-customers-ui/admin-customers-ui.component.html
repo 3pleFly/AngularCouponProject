@@ -12,7 +12,7 @@
       <div class="company" *ngFor="let customer of allCustomers | filter:filterTerm">
         <p><span style="font-weight: 800;">Name:</span>  {{ customer.firstName }}</p>
         <p><span style="font-weight: 800;">Email:</span> {{ customer.email }}</p>
-        <p><span style="font-weight: 800;">ID:</span> {{ customer.id }}</p>
+        <p><span style="font-weight: 800;">Coupons:</span> {{ customer.coupons.length }}</p>
       </div>
     </div>
   </div>

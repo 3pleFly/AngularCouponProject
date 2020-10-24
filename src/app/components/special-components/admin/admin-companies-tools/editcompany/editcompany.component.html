@@ -2,26 +2,32 @@
   <h2>Edit</h2>
   <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
 
-  <select formControlName="company" class="option">
-    <option selected ></option>
-    <option
-      *ngFor="let company of allCompanies"
-    >
-      {{ company.id }}:{{ company.name }}
+  <select
+    (change)="setCompanyInputDetails($event.target.value)"
+    formControlName="company"
+    class="option"
+  >
+  <option>Choose Company</option>
+  <option *ngFor="let company of allCompanies">
+      {{ company.name }}
     </option>
   </select>
   <input
+  *ngIf="selectedCompany"
+
     type="text"
     name="email"
     formControlName="email"
     placeholder="Insert email"
   />
   <input
+  *ngIf="selectedCompany"
+
     type="password"
     name="password"
     formControlName="password"
     placeholder="Insert password"
   />
   <br />
-  <button type="submit">Submit changes</button>
+  <button  [disabled]="!editCompanyFormProfile.valid" type="submit">Submit changes</button>
 </form>

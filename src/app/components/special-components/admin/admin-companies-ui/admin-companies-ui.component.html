@@ -12,7 +12,7 @@
       <div class="company" *ngFor="let company of allCompanies | filter:filterTerm">
         <p><span style="font-weight: 800;">Name:</span>  {{ company.name }}</p>
         <p><span style="font-weight: 800;">Email:</span> {{ company.email }}</p>
-        <p><span style="font-weight: 800;">ID:</span> {{ company.id }}</p>
+        <p><span style="font-weight: 800;">Coupons:</span> {{ company.coupons.length }}</p>
       </div>
     </div>
   </div>
