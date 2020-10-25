@@ -1,7 +1,8 @@
 export interface Coupon {
   id: number;
-  company: number;
-  category: any;
+  companyID: number;
+  categoryID: number;
+  categoryName: string;
   title: string;
   description: string;
   startDate: Date;

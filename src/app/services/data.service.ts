@@ -1,3 +1,4 @@
+import { Category } from './../models/category.module';
 import { ResponseDto } from './../models/responseDto.module ';
 import { Company } from './../models/company.module';
 import { Coupon } from './../models/coupon.module';
@@ -15,7 +16,10 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) {}
 
-
+  getAllCategories(): Observable<ResponseDto<Category[]>> {
+    const url = `${baseUrl}/public/categories`;
+    return this.httpClient.get<ResponseDto<Category[]>>(url);
+  }
 
   getOneCustomer(): Observable<ResponseDto<Customer>> {
     const url = `${baseUrl}/customers/customer`;
@@ -36,8 +40,9 @@ export class DataService {
     return (coupons = [
       {
         id: 0,
-        company: 1,
-        category: 1,
+        companyID: 1,
+        categoryID: 1,
+        categoryName: '',
         title: 'Diving with Mammels',
         description: 'dancing in the water',
         startDate: new Date(),
@@ -49,8 +54,9 @@ export class DataService {
       },
       {
         id: 0,
-        company: 1,
-        category: 1,
+        companyID: 1,
+        categoryID: 1,
+        categoryName: '',
         title: 'Hiking on Psychedelics',
         description: 'dancing in the water',
         startDate: new Date(),
@@ -62,8 +68,9 @@ export class DataService {
       },
       {
         id: 0,
-        company: 1,
-        category: 1,
+        companyID: 1,
+        categoryID: 1,
+        categoryName: '',
         title: 'Cycling Alone',
         description: 'dancing in the water',
         startDate: new Date(),
@@ -75,8 +82,9 @@ export class DataService {
       },
       {
         id: 0,
-        company: 1,
-        category: 1,
+        companyID: 1,
+        categoryID: 1,
+        categoryName: '',
         title: 'Cycling Alone',
         description: 'dancing in the water',
         startDate: new Date(),

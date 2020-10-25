@@ -1,3 +1,8 @@
+import { EditcouponComponent } from './pages/company-page/components/method/editcoupon/editcoupon.component';
+import { AddcouponComponent } from './pages/company-page/components/method/addcoupon/addcoupon.component';
+import { CompanyToolsComponent } from './pages/company-page/components/method/company-tools/company-tools.component';
+import { CouponsUiComponent } from './pages/company-page/components/ui/coupons-ui/coupons-ui.component';
+import { CompanyMainUiComponent } from './pages/company-page/components/ui/company-main-ui/company-main-ui.component';
 import { AdminCategoriesToolsComponent } from './pages/admin-page/components/tools/admin-categories-tools/admin-categories-tools.component';
 import { DeletecategoryComponent } from './pages/admin-page/components/tools/deletecategory/deletecategory.component';
 import { EditcategoryComponent } from './pages/admin-page/components/tools/editcategory/editcategory.component';
@@ -26,6 +31,7 @@ import { AddcustomerComponent } from './components/special-components/admin/admi
 import { AdminCustomersToolsComponent } from './components/special-components/admin/admin-customers-tools/admin-customers-tools.component';
 import { DeletecustomerComponent } from './components/special-components/admin/admin-customers-tools/deletecustomer/deletecustomer.component';
 import { EditcustomerComponent } from './components/special-components/admin/admin-customers-tools/editcustomer/editcustomer.component';
+import { DeletecouponComponent } from './pages/company-page/components/method/deletecoupon/deletecoupon.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -98,6 +104,24 @@ const routes: Routes = [
     path: 'company',
     component: CompanyPageComponent,
     canActivate: [AuthGuard],
+    children: [
+      { path: '', component: CompanyMainUiComponent },
+      {
+        path: 'coupons',
+        component: CouponsUiComponent,
+        children: [
+          {
+            path: '',
+            component: CompanyToolsComponent,
+            children: [
+              { path: 'addcoupon', component: AddcouponComponent },
+              { path: 'editcoupon', component: EditcouponComponent },
+              { path: 'deletecoupon', component: DeletecouponComponent },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     path: 'customer',

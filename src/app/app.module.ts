@@ -41,6 +41,13 @@ import { AdminCategoriesToolsComponent } from './pages/admin-page/components/too
 import { AddcategoryComponent } from './pages/admin-page/components/tools/addcategory/addcategory.component';
 import { EditcategoryComponent } from './pages/admin-page/components/tools/editcategory/editcategory.component';
 import { DeletecategoryComponent } from './pages/admin-page/components/tools/deletecategory/deletecategory.component';
+import { CompanySidebarComponent } from './pages/company-page/components/ui/company-sidebar/company-sidebar.component';
+import { CompanyMainUiComponent } from './pages/company-page/components/ui/company-main-ui/company-main-ui.component';
+import { CouponsUiComponent } from './pages/company-page/components/ui/coupons-ui/coupons-ui.component';
+import { AddcouponComponent } from './pages/company-page/components/method/addcoupon/addcoupon.component';
+import { DeletecouponComponent } from './pages/company-page/components/method/deletecoupon/deletecoupon.component';
+import { CompanyToolsComponent } from './pages/company-page/components/method/company-tools/company-tools.component';
+import { EditcouponComponent } from './pages/company-page/components/method/editcoupon/editcoupon.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +85,13 @@ import { DeletecategoryComponent } from './pages/admin-page/components/tools/del
     AddcategoryComponent,
     EditcategoryComponent,
     DeletecategoryComponent,
+    CompanySidebarComponent,
+    CompanyMainUiComponent,
+    CouponsUiComponent,
+    AddcouponComponent,
+    DeletecouponComponent,
+    CompanyToolsComponent,
+    EditcouponComponent,
   ],
   imports: [
     BrowserModule,

@@ -47,11 +47,10 @@ export class DeletecompanyComponent implements OnInit {
         (response) => (this.serverMessage = response.message),
         (error) => (this.serverMessage = error.error.message),
         () => {
-          this.adminService
-            .getAllCompanies()
-            .subscribe((response) =>
-              this.adminService.subjectForGetAllCompanies.next(response.t)
-            );
+          this.adminService.getAllCompanies().subscribe((response) => {
+            this.adminService.subjectForGetAllCompanies.next(response.t);
+            this.allCompanies = response.t;
+          });
           this.selectedCompany = null;
           this.deleteCompanyFormProfile.reset();
           setTimeout(() => {

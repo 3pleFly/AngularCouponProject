@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 >Coupons Control Interface</h1>
+  <input
+    #searchField
+    type="text"
+    placeholder="Start typing"
+    [(ngModel)]="filterTerm"
+    autocomplete="off"
+  />
+  <div class="coupons-if" *ngIf="allCoupons">
+    <div class="coupons">
+      <div class="coupon" *ngFor="let coupon of allCoupons | filter:filterTerm">
+        <p><span style="font-weight: 800;">Title:</span>  {{ coupon.title }}</p>
+        <p><span style="font-weight: 800;">Description:</span>  {{ coupon.description }}</p>
+        <p><span style="font-weight: 800;">Category:</span>  {{ coupon.categoryName }}</p>
+        <p><span style="font-weight: 800;">Start-Date::</span> {{ coupon.startDate }}</p>
+        <p><span style="font-weight: 800;">End-Date:</span> {{ coupon.endDate }}</p>
+        <p><span style="font-weight: 800;">Amount:</span> {{ coupon.amount}}</p>
+        <p><span style="font-weight: 800;">Price:</span> {{ coupon.price}}</p>
+        <p><span style="font-weight: 800;">Image:</span> {{ coupon.image}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
