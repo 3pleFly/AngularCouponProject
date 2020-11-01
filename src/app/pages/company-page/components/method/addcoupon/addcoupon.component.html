@@ -1,1 +1,50 @@
-<p>addcoupon works!</p>
+<form (ngSubmit)="addCoupon()" [formGroup]="addCouponFormProfile">
+  <h2>Add</h2>
+  <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+
+  <select
+    (change)="setCategory($event.target.value)"
+    *ngIf="allCategories"
+    formControlName="categoryName"
+    class="option"
+  >
+    <option>Choose Category</option>
+    <option *ngFor="let category of allCategories">
+      {{ category.category }}
+    </option>
+  </select>
+  <input
+    type="text"
+    name="title"
+    formControlName="title"
+    placeholder="Insert title"
+  />
+  <input
+    type="text"
+    name="description"
+    formControlName="description"
+    placeholder="Insert description"
+  />
+  <input type="date" name="startDate" formControlName="startDate" />
+  <input type="date" name="endDate" formControlName="endDate" />
+  <input
+    type="text"
+    name="amount"
+    formControlName="amount"
+    placeholder="Insert amount"
+  />
+  <input
+    type="text"
+    name="price"
+    formControlName="price"
+    placeholder="Insert price"
+  />
+  <input
+    type="text"
+    name="image"
+    formControlName="image"
+    placeholder="Insert image URL"
+  />
+  <br />
+  <button type="submit">Add coupon</button>
+</form>

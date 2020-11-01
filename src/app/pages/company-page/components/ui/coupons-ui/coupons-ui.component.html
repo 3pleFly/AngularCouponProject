@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 >Coupons Control Interface</h1>
+  <h1>Coupons Control Interface</h1>
   <input
     #searchField
     type="text"
@@ -7,17 +7,55 @@
     [(ngModel)]="filterTerm"
     autocomplete="off"
   />
+  <div class="filters">
+    <h5>Filter:</h5>
+    <ul>
+      <li (click)="filterAllCoupons()">All coupons</li>
+      <li (click)="showByCategory()">By category</li>
+      <li (click)="showByPrice()">By highest price</li>
+    </ul>
+
+    <div *ngIf="showCategoryBox" class="byCategory">
+      <select (change)="setCategory($event.target.value)" class="option">
+        <option>Choose Coupon</option>
+        <option *ngFor="let category of allCategories">
+          {{ category.category }}
+        </option>
+      </select>
+    </div>
+
+    <div *ngIf="showPriceBox" >
+      <input #input type="number" class="priceInput" />
+    <br/>
+      <button (click)="filterByMaxPrice(input)" class="submitPrice">Submit</button>
+    </div>
+  </div>
+
   <div class="coupons-if" *ngIf="allCoupons">
     <div class="coupons">
-      <div class="coupon" *ngFor="let coupon of allCoupons | filter:filterTerm">
-        <p><span style="font-weight: 800;">Title:</span>  {{ coupon.title }}</p>
-        <p><span style="font-weight: 800;">Description:</span>  {{ coupon.description }}</p>
-        <p><span style="font-weight: 800;">Category:</span>  {{ coupon.categoryName }}</p>
-        <p><span style="font-weight: 800;">Start-Date::</span> {{ coupon.startDate }}</p>
-        <p><span style="font-weight: 800;">End-Date:</span> {{ coupon.endDate }}</p>
-        <p><span style="font-weight: 800;">Amount:</span> {{ coupon.amount}}</p>
-        <p><span style="font-weight: 800;">Price:</span> {{ coupon.price}}</p>
-        <p><span style="font-weight: 800;">Image:</span> {{ coupon.image}}</p>
+      <div
+        class="coupon"
+        *ngFor="let coupon of allCoupons | filter: filterTerm"
+      >
+        <p><span style="font-weight: 800">Title:</span> {{ coupon.title }}</p>
+        <p>
+          <span style="font-weight: 800">Description:</span>
+          {{ coupon.description }}
+        </p>
+        <p>
+          <span style="font-weight: 800">Category:</span>
+          {{ coupon.categoryName }}
+        </p>
+        <p>
+          <span style="font-weight: 800">Start-Date:</span>
+          {{ coupon.startDate }}
+        </p>
+        <p>
+          <span style="font-weight: 800">End-Date:</span> {{ coupon.endDate }}
+        </p>
+        <p><span style="font-weight: 800">Amount:</span> {{ coupon.amount }}</p>
+        <p><span style="font-weight: 800">Price:</span> {{ coupon.price }}</p>
+        <p><span style="font-weight: 800">Image:</span> {{ coupon.image }}</p>
       </div>
     </div>
   </div>

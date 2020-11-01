@@ -1,20 +1,10 @@
 <div class="container">
   <div class="filter">
-    <h1>Top Coupons</h1>
+    <h1>Coupons</h1>
     <ul>
-      <li>Latest</li>
-      <li>Bestseller</li>
-      <li>Special</li>
+      <li (click)="sortByLatest()">Latest</li>
+      <li (click)="sortByCheapest()">Cheapest</li>
     </ul>
   </div>
-
-  <!-- <div class="coupons-display">
-    <div class="showcase" *ngFor="let coupon of coupons" >
-      <img src="{{coupon.image}}" alt="">
-        <h2>{{coupon.title}}</h2>
-        <b>{{coupon.price | currency}}</b>
-    </div>
-  </div>
-  <button id="shuffle-btn">Shuffle</button> -->
 
 </div>

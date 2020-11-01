@@ -5,7 +5,7 @@ import { Company } from './../../models/company.module';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { baseUrl } from 'src/environments/environment';
-import { ResponseDto } from 'src/app/models/responseDto.module ';
+import { ResponseDto } from 'src/app/models/responseDto.module';
 
 @Injectable({
   providedIn: 'root',

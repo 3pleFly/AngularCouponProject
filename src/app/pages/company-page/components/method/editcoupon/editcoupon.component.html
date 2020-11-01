@@ -1,1 +1,74 @@
-<p>editcoupon works!</p>
+  <form (ngSubmit)="editCoupon()" [formGroup]="editCouponFormProfile">
+    <h2>Edit</h2>
+    <p class="message" *ngIf="serverMessage">{{ serverMessage }}</p>
+
+    <select
+      (change)="setCouponInputDetails($event.target.value)"
+      class="option"
+    >
+    <option>Choose Coupon</option>
+    <option *ngFor="let coupon of allCoupons">
+        {{ coupon.title }}
+      </option>
+    </select>
+    <select
+      (change)="setCategory($event.target.value)"
+      *ngIf="selectedCoupon"
+      formControlName="categoryName"
+      class="option"
+    >
+      <option>Choose Category</option>
+      <option *ngFor="let category of allCategories">
+        {{ category.category }}
+      </option>
+    </select>
+    <input
+      *ngIf="selectedCoupon"
+      type="text"
+      name="title"
+      formControlName="title"
+      placeholder="Insert title"
+    />
+    <input
+      *ngIf="selectedCoupon"
+      type="text"
+      name="description"
+      formControlName="description"
+      placeholder="Insert description"
+    />
+    <input
+      *ngIf="selectedCoupon"
+      type="date"
+      name="startDate"
+      formControlName="startDate"
+    />
+    <input
+      *ngIf="selectedCoupon"
+      type="date"
+      name="endDate"
+      formControlName="endDate"
+    />
+    <input
+      *ngIf="selectedCoupon"
+      type="text"
+      name="amount"
+      formControlName="amount"
+      placeholder="Insert amount"
+    />
+    <input
+      *ngIf="selectedCoupon"
+      type="text"
+      name="price"
+      formControlName="price"
+      placeholder="Insert price"
+    />
+    <input
+      *ngIf="selectedCoupon"
+      type="text"
+      name="image"
+      formControlName="image"
+      placeholder="Insert image URL"
+    />
+    <br />
+    <button *ngIf="selectedCoupon" type="submit">Submit changes</button>
+  </form>

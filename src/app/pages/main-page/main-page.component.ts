@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
-
+  mainPage: boolean;
   constructor() { }
 
   ngOnInit(): void {
+    this.mainPage = true;
   }
 
 }

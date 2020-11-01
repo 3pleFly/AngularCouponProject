@@ -127,7 +127,7 @@ const routes: Routes = [
     path: 'customer',
     component: CustomerPageComponent,
     canActivate: [AuthGuard],
-    children: [{ path: 'customerui', component: CustomerUiComponent }],
+    children: [{ path: '', component: CustomerUiComponent }],
   },
 
   { path: '**', redirectTo: 'main' },

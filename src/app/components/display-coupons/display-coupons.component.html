@@ -1,10 +1,69 @@
-<div class="container">
+<app-showcase></app-showcase>
+<div class="container" *ngIf="displayCoupons">
   <div class="coupons-display">
-    <div class="showcase" *ngFor="let coupon of coupons">
+    <div
+      (click)="selectCoupon(coupon)"
+      class="showcase"
+      *ngFor="let coupon of displayCoupons"
+    >
       <img src="{{ coupon.image }}" alt="" />
       <h2>{{ coupon.title }}</h2>
-      <b>{{ coupon.price | currency }}</b>
+      <b style="font-style: italic">{{ coupon.amount }} available</b>
     </div>
   </div>
-  <button id="shuffle-btn">Shuffle</button>
+  <button *ngIf="!selectedCoupon" (click)="shuffle()" id="shuffle-btn">
+    Shuffle
+  </button>
+
+  <p style="color: red;" *ngIf="purchaseErrorMesage" > {{ purchaseErrorMesage }} </p>
+
+  <div *ngIf="selectedCoupon" class="selectedCoupon">
+    <div class="img">
+      <img src="{{ selectedCoupon.image }}" alt="" />
+    </div>
+    <div class="details">
+      <p>
+        Title:
+        <span>
+          {{ selectedCoupon.title }}
+        </span>
+      </p>
+
+      <p>
+        Description:
+        <span>
+          {{ selectedCoupon.description }}
+        </span>
+      </p>
+
+      <p >
+        Start Date:
+        <span>
+          {{ selectedCoupon.startDate }}
+        </span>
+      </p>
+
+      <p>
+        Expiration Date:
+        <span>
+          {{ selectedCoupon.endDate }}
+        </span>
+      </p>
+
+      <p>
+        Amount:
+        <span>
+          {{ selectedCoupon.amount }}
+        </span>
+      </p>
+
+      <p >
+        Price:
+        <span>
+          {{ selectedCoupon.price }}
+        </span>
+      </p>
+      <button id="shuffle-btn" (click)="purchaseCoupon(selectedCoupon)"> Purchase Coupon </button>
+    </div>
+  </div>
 </div>

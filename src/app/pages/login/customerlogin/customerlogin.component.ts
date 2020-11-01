@@ -33,7 +33,11 @@ export class CustomerloginComponent implements OnInit, OnDestroy {
   loginProcess() {
     if (this.loginForm.valid) {
       this.loginSubscription = this.authService
-        .login(this.loginForm.value, this.router.url)
+        .login(
+          this.loginForm.value.username,
+          this.loginForm.value.password,
+          this.router.url
+        )
         .subscribe((result) => {
           if (result) {
             switch (this.authService.getTokenScopeFromStorage()) {

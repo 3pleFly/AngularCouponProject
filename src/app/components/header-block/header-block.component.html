@@ -16,14 +16,9 @@
     </ul>
   </div>
   <div class="navbar" *ngIf="displaySegmentForMain">
-    <ul>
-      <li>Electricity</li>
-      <li>Vacation</li>
-      <li>Swimming</li>
-      <li>Restaurants</li>
-      <li>Furniture</li>
-      <li>Hobbies</li>
-      <li>Family</li>
+    <ul  >
+      <li (click)="showAllDisplay()" >All</li>
+      <li (click)="switchDisplay(category)" *ngFor="let category of allCategories">{{category.category}} </li>
     </ul>
   </div>
 </div>

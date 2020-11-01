@@ -1,7 +1,7 @@
+import { Coupon } from 'src/app/models/coupon.module';
 import { Category } from './../models/category.module';
-import { ResponseDto } from './../models/responseDto.module ';
+import { ResponseDto } from '../models/responseDto.module';
 import { Company } from './../models/company.module';
-import { Coupon } from './../models/coupon.module';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
@@ -13,12 +13,19 @@ import { Customer } from '../models/customer.module';
 })
 export class DataService {
   subjectForFeatureCompany: Subject<number> = new Subject();
+  subjectForSortingShowcaseCoupons: Subject<Coupon[]> = new Subject();
+  subjectForCategoryDisplay: Subject<Category> = new Subject();
 
   constructor(private httpClient: HttpClient) {}
 
   getAllCategories(): Observable<ResponseDto<Category[]>> {
     const url = `${baseUrl}/public/categories`;
     return this.httpClient.get<ResponseDto<Category[]>>(url);
+  }
+
+  getAllCoupons(): Observable<ResponseDto<Coupon[]>> {
+    const url = `${baseUrl}/public/coupons`;
+    return this.httpClient.get<ResponseDto<Coupon[]>>(url);
   }
 
   getOneCustomer(): Observable<ResponseDto<Customer>> {

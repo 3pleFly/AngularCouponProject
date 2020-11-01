@@ -19,6 +19,8 @@
     display: flex;
 
     li {
+      cursor: pointer;
+
       margin: 10px;
 
       &:hover {
@@ -49,6 +51,8 @@
     display: flex;
     justify-content: space-around;
     li {
+      cursor: pointer;
+
       padding: 0 10px;
 
       transition: 0.15s all ease-in-out;

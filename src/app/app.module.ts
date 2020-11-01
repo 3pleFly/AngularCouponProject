@@ -30,7 +30,6 @@ import { CustomerloginComponent } from './pages/login/customerlogin/customerlogi
 import { CustomerPageComponent } from './pages/customer-page/customer-page.component';
 import { AdminSidebarComponent } from './components/special-components/admin/admin-sidebar/admin-sidebar.component';
 import { AdminCompaniesUiComponent } from './components/special-components/admin/admin-companies-ui/admin-companies-ui.component';
-import { CustomerSidebarComponent } from './components/special-components/customer/customer-sidebar/customer-sidebar.component';
 import { CustomerUiComponent } from './components/special-components/customer/customer-ui/customer-ui.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
@@ -67,7 +66,6 @@ import { EditcouponComponent } from './pages/company-page/components/method/edit
     CustomerPageComponent,
     AdminSidebarComponent,
     AdminCompaniesUiComponent,
-    CustomerSidebarComponent,
     AdminCompaniesToolsComponent,
     AddcompanyComponent,
     EditcompanyComponent,

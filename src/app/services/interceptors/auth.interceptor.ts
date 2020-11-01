@@ -1,4 +1,4 @@
-import { ResponseDto } from './../../models/responseDto.module ';
+import { ResponseDto } from '../../models/responseDto.module';
 import { AuthService } from '../auth.service';
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
@@ -10,7 +10,7 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -26,22 +26,13 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request);
-    // .pipe(
-    //   catchError((error: HttpErrorResponse) => {
-    //     let errorMsg = '';
-    //     console.log('Error has been caught:');
-    //     errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
-    //     return throwError(errorMsg);
-    //   })
-    // );
   }
 
-  private addToken(request: HttpRequest<any>, token: string) {
+  private addToken(request: HttpRequest<any>, token: string): HttpRequest<any> {
     return request.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`,
       },
     });
   }
-
 }

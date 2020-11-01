@@ -7,10 +7,9 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-companylogin',
   templateUrl: './companylogin.component.html',
-  styleUrls: ['./companylogin.component.scss']
+  styleUrls: ['./companylogin.component.scss'],
 })
 export class CompanyloginComponent implements OnInit, OnDestroy {
-
   loginSubscription: Subscription;
 
   loginForm = this.formBuilder.group({
@@ -25,7 +24,7 @@ export class CompanyloginComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    if(this.loginSubscription !== undefined) {
+    if (this.loginSubscription !== undefined) {
       this.loginSubscription.unsubscribe();
     }
   }
@@ -34,23 +33,29 @@ export class CompanyloginComponent implements OnInit, OnDestroy {
 
   loginProcess() {
     if (this.loginForm.valid) {
-      this.loginSubscription = this.authService.login(this.loginForm.value, this.router.url).subscribe((result) => {
-        if (result) {
-          switch (this.authService.getTokenScopeFromStorage()) {
-            case 'admin':
-              this.router.navigate(['/admin']);
-              break;
-            case 'company':
-              this.router.navigate(['/company']);
-              break;
-            case 'custoemr':
-              this.router.navigate(['/customer']);
-              break;
-            default:
-              return throwError('Unknown scope');
+      this.loginSubscription = this.authService
+        .login(
+          this.loginForm.value.username,
+          this.loginForm.value.password,
+          this.router.url
+        )
+        .subscribe((result) => {
+          if (result) {
+            switch (this.authService.getTokenScopeFromStorage()) {
+              case 'admin':
+                this.router.navigate(['/admin']);
+                break;
+              case 'company':
+                this.router.navigate(['/company']);
+                break;
+              case 'custoemr':
+                this.router.navigate(['/customer']);
+                break;
+              default:
+                return throwError('Unknown scope');
+            }
           }
-        }
-      });
+        });
     }
   }
 }
